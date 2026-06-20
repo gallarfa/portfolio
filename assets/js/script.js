@@ -1,76 +1,112 @@
-// Cuando la página cargue completamente
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Crear botón de menú para móvil
-    const nav = document.querySelector('.nav');
-    const navMenu = document.querySelector('.nav__menu');
-    
-    // Crear botón hamburguesa
-    const menuButton = document.createElement('button');
-    menuButton.innerHTML = '☰';
-    menuButton.classList.add('mobile-menu-btn');
-    menuButton.style.cssText = `
-        display: none;
-        background: none;
-        border: none;
-        font-size: 2rem;
-        cursor: pointer;
-        color: var(--primary-color);
-    `;
-    
-    // Insertar botón en el nav
-    nav.insertBefore(menuButton, navMenu);
-    
-    // Función para manejar el menú en móvil
-    function handleMobileMenu() {
-        if (window.innerWidth <= 768) {
-            menuButton.style.display = 'block';
-            navMenu.style.display = 'none';
-            
-            menuButton.addEventListener('click', function() {
-                if (navMenu.style.display === 'none') {
-                    navMenu.style.display = 'flex';
-                    navMenu.style.flexDirection = 'column';
-                    navMenu.style.position = 'absolute';
-                    navMenu.style.top = '70px';
-                    navMenu.style.left = '0';
-                    navMenu.style.width = '100%';
-                    navMenu.style.backgroundColor = 'white';
-                    navMenu.style.padding = '1rem';
-                    navMenu.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-                } else {
-                    navMenu.style.display = 'none';
-                }
-            });
-        } else {
-            menuButton.style.display = 'none';
-            navMenu.style.display = 'flex';
-            navMenu.style.flexDirection = 'row';
-            navMenu.style.position = 'static';
-            navMenu.style.width = 'auto';
-            navMenu.style.backgroundColor = 'transparent';
-            navMenu.style.padding = '0';
-            navMenu.style.boxShadow = 'none';
-        }
-    }
-    
-    // Ejecutar al cargar
-    handleMobileMenu();
-    
-    // Ejecutar al cambiar el tamaño de la ventana
-    window.addEventListener('resize', handleMobileMenu);
-    
-    // Smooth scroll para los links del menú
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+/* ==================== MOSTRAR / OCULTAR MENÚ MÓVIL ==================== */
+const navMenu = document.getElementById('nav-menu'),
+      navToggle = document.getElementById('nav-toggle'),
+      navClose = document.getElementById('nav-close');
+
+/* Validar si el elemento de toggle existe */
+if(navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.add('show-menu');
     });
+}
+
+/* Validar si el elemento de cerrar existe */
+if(navClose) {
+    navClose.addEventListener('click', () => {
+        navMenu.classList.remove('show-menu');
+    });
+}
+
+/* ==================== QUITAR MENÚ MÓVIL AL SELECCIONAR ENLACE ==================== */
+const navLink = document.querySelectorAll('.nav__link');
+
+const linkAction = () => {
+    const navMenu = document.getElementById('nav-menu');
+    // Cuando hacemos clic en cada nav__link, eliminamos la clase show-menu
+    navMenu.classList.remove('show-menu');
+}
+navLink.forEach(n => n.addEventListener('click', linkAction));
+
+/* ==================== CAMBIAR ESTILO DEL HEADER AL HACER SCROLL (STICKY) ==================== */
+const scrollHeader = () => {
+    const header = document.getElementById('header');
+    // Cuando el scroll es superior a 50px de altura, se añade una sombra o fondo
+    if(this.scrollY >= 50) {
+        header?.classList.add('scroll-header');
+    } else {
+        header?.classList.remove('scroll-header');
+    }
+}
+window.addEventListener('scroll', scrollHeader);
+
+/* ==================== ACTIVA ENLACES DEL MENÚ CON SCROLL ==================== */
+const sections = document.querySelectorAll('section[id]');
+    
+const scrollActive = () => {
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight,
+              sectionTop = current.offsetTop - 58,
+              sectionId = current.getAttribute('id'),
+              sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']');
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            sectionsClass?.classList.add('active-link');
+        } else {
+            sectionsClass?.classList.remove('active-link');
+        }                                                    
+    });
+}
+window.addEventListener('scroll', scrollActive);
+
+/* ==================== EFECTO SCROLL REVEAL (INYECCIÓN DINÁMICA NATIVA) ==================== */
+// Inyectamos estilos CSS para el reveal dinámicamente sin tocar el archivo CSS
+const revealStyle = document.createElement('style');
+revealStyle.textContent = `
+    .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+document.head.appendChild(revealStyle);
+
+// Seleccionamos elementos que queremos animar en scroll
+const elementsToReveal = [
+    document.querySelector('.hero__content'),
+    document.querySelector('.hero__visual'),
+    document.getElementById('title-sobre-mi'),
+    document.querySelector('.about__text'),
+    document.querySelector('.skills__container'),
+    document.getElementById('title-experiencia'),
+    ...document.querySelectorAll('.timeline__item'),
+    document.getElementById('title-proyectos'),
+    ...document.querySelectorAll('.project-card'),
+    document.getElementById('title-contacto'),
+    document.querySelector('.contact__info')
+].filter(el => el !== null); // Filtrar nulos si acaso
+
+// Asignamos la clase reveal
+elementsToReveal.forEach(el => el.classList.add('reveal'));
+
+// Intersection Observer para disparar la animación
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add('active');
+            // Dejar de observar una vez animado
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15, // Porcentaje visible para disparar la animación
+    rootMargin: "0px 0px -50px 0px"
 });
+
+// Observar cada elemento
+elementsToReveal.forEach(el => revealObserver.observe(el));

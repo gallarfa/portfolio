@@ -3,198 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fernando Gallardo | Junior Developer</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Fernando Gallardo | Junior Developer & Frontend en formación</title>
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Portfolio profesional de Fernando Andrés Gallardo, desarrollador de software Junior especializado en Full Stack y Frontend con React, TypeScript y Node.js.">
+    <meta name="keywords" content="Fernando Gallardo, Junior Developer, Frontend, Full Stack, React, TypeScript, Node.js, Posadas, Misiones, Argentina, Portfolio, Web Developer">
+    <meta name="author" content="Fernando Andrés Gallardo">
+    
+    <!-- Open Graph para LinkedIn / Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fernando Gallardo | Junior Developer">
+    <meta property="og:description" content="Portfolio profesional. Experiencia práctica en soporte fintech (Wallbit) y backend APIs (Silicon Misiones). Mira mis proyectos de React y TypeScript.">
+    <meta property="og:image" content="assets/images/foto1.jpg">
+    <meta property="og:url" content="https://portfolio-eight-psi-k7r98buv9n.vercel.app/">
+
+    <!-- RemixIcon para Iconos Premium -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- HEADER -->
+
+    <!-- NAV BAR -->
     <header class="header">
         <nav class="nav container">
             <div class="nav__logo">
-                <a href="#inicio">FG</a>
+                <a href="#inicio">F<span>G</span></a>
             </div>
-            <ul class="nav__menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+            
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#inicio" class="nav__link active-link"><i class="ri-home-5-line"></i> Inicio</a></li>
+                    <li class="nav__item"><a href="#sobre-mi" class="nav__link"><i class="ri-user-3-line"></i> Sobre mí</a></li>
+                    <li class="nav__item"><a href="#experiencia" class="nav__link"><i class="ri-briefcase-line"></i> Experiencia</a></li>
+                    <li class="nav__item"><a href="#proyectos" class="nav__link"><i class="ri-code-s-slash-line"></i> Proyectos</a></li>
+                    <li class="nav__item"><a href="#contacto" class="nav__link"><i class="ri-contacts-book-line"></i> Contacto</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-menu-3-line"></i>
+            </div>
         </nav>
     </header>
 
-    <!-- INICIO -->
-    <section id="inicio" class="hero">
-        <div class="hero__content container">
-            <h1 class="hero__title">Fernando Andrés <span class="highlight">Gallardo</span></h1>
-            <p class="hero__subtitle">Junior Developer | Full Stack en formación</p>
-            <p class="hero__description">
-                Destacado por mi capacidad para trabajar en equipo y comunicar ideas técnicas de manera efectiva. 
-                Siempre comprometido con la mejora continua y la actualización de mis habilidades.
-            </p>
-            <div class="hero__buttons">
-                <a href="#proyectos" class="btn btn--primary">Ver proyectos</a>
-                <a href="#contacto" class="btn btn--secondary">Contactarme</a>
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        
+        <!-- HERO -->
+        <section id="inicio" class="hero section">
+            <div class="hero__container container grid">
+                <div class="hero__content">
+                    <div class="badge-status">
+                        <span class="badge-status__pulse"></span>
+                        <span class="badge-status__text">Disponible para trabajar (Open to Work)</span>
+                    </div>
+                    <h1 class="hero__title">
+                        Fernando Andrés <br>
+                        <span class="text-gradient">Gallardo</span>
+                    </h1>
+                    <h2 class="hero__subtitle">Junior Developer | Frontend & Full Stack</h2>
+                    <p class="hero__description">
+                        Desarrollador enfocado en crear interfaces modernas, responsivas y de alto rendimiento. 
+                        Con experiencia práctica en soporte de plataformas Fintech y desarrollo de APIs Backend. 
+                        Siempre impulsado por la mejora continua.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#proyectos" class="btn btn--primary">
+                            <i class="ri-folder-open-line"></i> Ver Proyectos
+                        </a>
+                        <a href="#contacto" class="btn btn--secondary">
+                            <i class="ri-chat-3-line"></i> Contactarme
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero__visual">
+                    <div class="hero__blob-wrapper">
+                        <div class="hero__blob"></div>
+                        <img src="assets/images/foto1.jpg" alt="Fernando Gallardo" class="hero__img">
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SOBRE MÍ -->
-    <section id="sobre-mi" class="about">
-        <div class="about__content container">
-            <h2 class="section-title">Sobre mí</h2>
-            <div class="about__grid">
-                <div class="about__text">
-                    <p>Soy un desarrollador en formación con base en Posadas, Misiones. Actualmente curso el último año de Analista de Sistemas y me capacito constantemente en tecnologías Full Stack.</p>
-                    <p>Mi objetivo es obtener mi primer empleo en IT donde pueda aportar mi entusiasmo, capacidad analítica y compromiso, mientras sigo creciendo profesionalmente.</p>
+        <!-- SOBRE MÍ -->
+        <section id="sobre-mi" class="about section">
+            <div class="container">
+                <h2 class="section-title" id="title-sobre-mi">Sobre mí</h2>
+                
+                <div class="about__container grid">
+                    <div class="about__text">
+                        <p class="about__paragraph">
+                            Soy estudiante del último año de la carrera de <strong>Analista de Sistemas</strong> en Posadas, Misiones. Mi fascinación por la tecnología me ha llevado a capacitarme de manera constante en tecnologías Full Stack, especializándome actualmente en el desarrollo Frontend moderno.
+                        </p>
+                        <p class="about__paragraph">
+                            A través de mis experiencias laborales previas, he aprendido el valor del trabajo en equipo, la comunicación técnica fluida y la importancia de una UX excepcional. Busco mi primera oportunidad formal como desarrollador frontend donde pueda aportar mi entusiasmo y bases sólidas, colaborando en la creación de software de calidad.
+                        </p>
+                        
+                        <div class="about__info-grid">
+                            <div class="about__info-card">
+                                <i class="ri-map-pin-user-line about__info-icon"></i>
+                                <div>
+                                    <h4>Ubicación</h4>
+                                    <p>Posadas, Misiones, Arg.</p>
+                                </div>
+                            </div>
+                            <div class="about__info-card">
+                                <i class="ri-global-line about__info-icon"></i>
+                                <div>
+                                    <h4>Idiomas</h4>
+                                    <p>Español (Nativo) / Inglés (B2 en prep.)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SKILLS agrupadas -->
+                    <div class="skills__container">
+                        <h3 class="skills__title">Mi Stack Tecnológico</h3>
+                        
+                        <div class="skills__group">
+                            <h4 class="skills__subtitle"><i class="ri-layout-3-line"></i> Frontend</h4>
+                            <div class="skills__list">
+                                <span class="skill-badge"><i class="ri-html5-fill skill-icon-html"></i> HTML5</span>
+                                <span class="skill-badge"><i class="ri-css3-fill skill-icon-css"></i> CSS3</span>
+                                <span class="skill-badge"><i class="ri-javascript-fill skill-icon-js"></i> JavaScript</span>
+                                <span class="skill-badge"><i class="ri-reactjs-fill skill-icon-react"></i> React.js</span>
+                                <span class="skill-badge"><i class="ri-bootstrap-fill skill-icon-bootstrap"></i> Bootstrap</span>
+                            </div>
+                        </div>
+
+                        <div class="skills__group">
+                            <h4 class="skills__subtitle"><i class="ri-server-line"></i> Backend & Bases de Datos</h4>
+                            <div class="skills__list">
+                                <span class="skill-badge"><i class="ri-node-js skill-icon-node"></i> Node.js</span>
+                                <span class="skill-badge">Express</span>
+                                <span class="skill-badge"><i class="ri-database-2-line skill-icon-db"></i> MySQL</span>
+                                <span class="skill-badge"><i class="ri-leaf-line skill-icon-mongo"></i> MongoDB</span>
+                            </div>
+                        </div>
+
+                        <div class="skills__group">
+                            <h4 class="skills__subtitle"><i class="ri-tools-line"></i> Herramientas / Blandas</h4>
+                            <div class="skills__list">
+                                <span class="skill-badge"><i class="ri-git-branch-line skill-icon-git"></i> Git</span>
+                                <span class="skill-badge"><i class="ri-github-fill"></i> GitHub</span>
+                                <span class="skill-badge"><i class="ri-trello-fill skill-icon-trello"></i> Trello / Jira</span>
+                                <span class="skill-badge font-soft">Trabajo en equipo</span>
+                                <span class="skill-badge font-soft">Comunicación efectiva</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCIA (TIMELINE) -->
+        <section id="experiencia" class="experience section section-bg">
+            <div class="container">
+                <h2 class="section-title" id="title-experiencia">Experiencia Profesional</h2>
+                
+                <div class="timeline">
+                    <!-- Silicon Misiones -->
+                    <div class="timeline__item">
+                        <div class="timeline__marker">
+                            <i class="ri-code-box-line"></i>
+                        </div>
+                        <div class="timeline__content">
+                            <div class="timeline__header">
+                                <span class="timeline__date">2023 - 2024</span>
+                                <h3 class="timeline__title">Pasante en Desarrollo Back-End (Trainee)</h3>
+                                <h4 class="timeline__company">Silicon Misiones</h4>
+                            </div>
+                            <p class="timeline__description">
+                                Participación activa en el diseño y desarrollo de APIs REST utilizando Node.js y Express. 
+                                Aplicación de arquitecturas de backend y patrones de enrutamiento modulares. Trabajo diario 
+                                con Git y GitHub bajo flujos de trabajo colaborativos y resolución de incidencias en Jira.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Wallbit -->
+                    <div class="timeline__item">
+                        <div class="timeline__marker">
+                            <i class="ri-customer-service-2-line"></i>
+                        </div>
+                        <div class="timeline__content">
+                            <div class="timeline__header">
+                                <span class="timeline__date">2024</span>
+                                <h3 class="timeline__title">Soporte Técnico Interno (Junior)</h3>
+                                <h4 class="timeline__company">Wallbit (Neobanco Fintech)</h4>
+                            </div>
+                            <p class="timeline__description">
+                                Resolución de consultas técnicas y operativas de primer nivel a usuarios a través de chat 
+                                y correo electrónico. Validación de identidad y aplicación de protocolos de seguridad 
+                                anti-fraude. Trabajo ágil con Trello/Jira y ganancia de visión sobre el funcionamiento 
+                                de productos digitales financieros y UX.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTOS -->
+        <section id="proyectos" class="projects section">
+            <div class="container">
+                <h2 class="section-title" id="title-proyectos">Proyectos Destacados</h2>
+                <p class="section-subtitle">Construyendo código sólido bajo el plan de desarrollo profesional</p>
+                
+                <div class="projects__grid grid">
                     
-                    <h3>Habilidades Técnicas</h3>
-                    <div class="skills">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
+                    <!-- Proyecto 1: API Tareas -->
+                    <div class="project-card">
+                        <div class="project-card__header">
+                            <i class="ri-server-line project-card__icon"></i>
+                            <div class="project-card__badges">
+                                <span class="badge badge--success">Completado</span>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">App de Tareas - Backend API</h3>
+                            <p class="project-card__text">
+                                API RESTful robusta para gestión de tareas. Cuenta con CRUD completo, persistencia en base de datos MongoDB con Mongoose y enrutamiento modular limpio.
+                            </p>
+                            <div class="project-card__tech">
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>MongoDB</span>
+                                <span>Git</span>
+                            </div>
+                            <div class="project-card__links">
+                                <a href="https://github.com/gallarfa/node_api_rest-mongo" target="_blank" class="project-card__link">
+                                    <i class="ri-github-fill"></i> Código
+                                </a>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3>Habilidades Blandas</h3>
-                    <div class="skills">
-                        <span class="skill-tag soft">Trabajo en equipo</span>
-                        <span class="skill-tag soft">Comunicación efectiva</span>
-                        <span class="skill-tag soft">Creatividad</span>
-                        <span class="skill-tag soft">Empatía</span>
-                        <span class="skill-tag soft">Manejo de crisis</span>
-                        <span class="skill-tag soft">Puntualidad</span>
+                    <!-- Proyecto 2: MovieHub (En desarrollo) -->
+                    <div class="project-card">
+                        <div class="project-card__header">
+                            <i class="ri-film-line project-card__icon"></i>
+                            <div class="project-card__badges">
+                                <span class="badge badge--warning">En Progreso</span>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">MovieHub - Buscador de Películas</h3>
+                            <p class="project-card__text">
+                                Aplicación web que consume la API de TMDB. Incluye búsqueda con debounce, diseño responsivo premium, favoritos mediante localStorage y filtrados.
+                            </p>
+                            <div class="project-card__tech">
+                                <span>React</span>
+                                <span>TypeScript</span>
+                                <span>Vite</span>
+                                <span>CSS Modules</span>
+                            </div>
+                            <div class="project-card__links">
+                                <span class="project-card__link project-card__link--disabled">
+                                    <i class="ri-lock-line"></i> Próximamente (Semana 3)
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="about__image">
-                    <img src="assets/images/foto1.jpg" alt="Fernando Gallardo" class="profile-image">
+
+                    <!-- Proyecto 3: TaskFlow (En desarrollo) -->
+                    <div class="project-card">
+                        <div class="project-card__header">
+                            <i class="ri-task-line project-card__icon"></i>
+                            <div class="project-card__badges">
+                                <span class="badge badge--warning">En Progreso</span>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">TaskFlow - Kanban Board</h3>
+                            <p class="project-card__text">
+                                Gestor de tareas avanzado con interfaz tipo Kanban (Drag & Drop), control de estado global mediante Zustand, filtros múltiples y exportación a JSON.
+                            </p>
+                            <div class="project-card__tech">
+                                <span>React</span>
+                                <span>TypeScript</span>
+                                <span>Zustand</span>
+                                <span>Tailwind</span>
+                            </div>
+                            <div class="project-card__links">
+                                <span class="project-card__link project-card__link--disabled">
+                                    <i class="ri-lock-line"></i> Próximamente (Semana 5)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- PROYECTOS -->
-    <section id="proyectos" class="projects">
-        <div class="projects__content container">
-            <h2 class="section-title">Mis Proyectos</h2>
-            <p class="section-subtitle">Proyectos en desarrollo</p>
-            
-            <div class="projects__grid">
-                <!-- Proyecto 1 - App de Tareas -->
-                <div class="project-card">
-                    <div class="project-card__image">📝</div>
-                    <div class="project-card__info">
-                        <h3>App de Tareas - Backend API</h3>
-                        <p>API RESTful completa para gestión de tareas. CRUD con Node.js, Express y MongoDB. Arquitectura modular y código limpio.</p>
-                        <div class="project-tags">
-                            <span>Node.js</span>
-                            <span>Express</span>
-                            <span>MongoDB</span>
-                            <span>Mongoose</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/gallarfa/app-tareas-backend" target="_blank">Código</a>
-                            <a href="#" class="disabled">Demo (pronto)</a>
-                        </div>
-                    </div>
-                </div>
+        <!-- CONTACTO -->
+        <section id="contacto" class="contact section section-bg">
+            <div class="container">
+                <h2 class="section-title" id="title-contacto">Hablemos</h2>
+                <p class="section-subtitle">¿Buscas incorporar un desarrollador con iniciativa en tu equipo? ¡Contáctame!</p>
+                
+                <div class="contact__container grid">
+                    <div class="contact__info">
+                        <h3 class="contact__title">Información de Contacto</h3>
+                        <p class="contact__text">
+                            Estoy abierto a propuestas de empleo o pasantías en desarrollo de software, especialmente roles Frontend o Full Stack.
+                        </p>
+                        
+                        <div class="contact__details">
+                            <a href="mailto:gallarfa.29@gmail.com" class="contact__card">
+                                <i class="ri-mail-line contact__card-icon"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>gallarfa.29@gmail.com</p>
+                                </div>
+                            </a>
+                            
+                            <a href="tel:+5493764398063" class="contact__card">
+                                <i class="ri-phone-line contact__card-icon"></i>
+                                <div>
+                                    <h4>Teléfono</h4>
+                                    <p>+54 9 3764-398063</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://www.linkedin.com/in/gallarfa" target="_blank" class="contact__card">
+                                <i class="ri-linkedin-box-line contact__card-icon"></i>
+                                <div>
+                                    <h4>LinkedIn</h4>
+                                    <p>linkedin.com/in/gallarfa</p>
+                                </div>
+                            </a>
 
-                <!-- Proyecto 2 - App del Clima -->
-                <div class="project-card">
-                    <div class="project-card__image">🌦️</div>
-                    <div class="project-card__info">
-                        <h3>App del Clima</h3>
-                        <p>En desarrollo: Consulta el clima en tiempo real con API externa.</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>API</span>
-                            <span>CSS3</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/gallarfa/weather-app" target="_blank">Código</a>
-                            <a href="#" class="disabled">Demo (pronto)</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Proyecto 3 - Portfolio Personal -->
-                <div class="project-card">
-                    <div class="project-card__image">📋</div>
-                    <div class="project-card__info">
-                        <h3>Portfolio Personal</h3>
-                        <p>Este sitio web responsive que estás viendo, desarrollado con HTML, CSS y JavaScript.</p>
-                        <div class="project-tags">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/gallarfa/portfolio" target="_blank">Código</a>
-                            <a href="https://portfolio-eight-psi-k7r98buv9n.vercel.app" target="_blank">Demo</a>
+                            <a href="https://github.com/gallarfa" target="_blank" class="contact__card">
+                                <i class="ri-github-line contact__card-icon"></i>
+                                <div>
+                                    <h4>GitHub</h4>
+                                    <p>github.com/gallarfa</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="contact">
-        <div class="contact__content container">
-            <h2 class="section-title">Contacto</h2>
-            <p class="section-subtitle">¿Hablamos? Busco mi primera oportunidad en IT</p>
-            
-            <div class="contact__info">
-                <div class="contact__item">
-                    <span class="contact__icon">📧</span>
-                    <div>
-                        <h3>Email</h3>
-                        <a href="mailto:gallarfa.29@gmail.com">gallarfa.29@gmail.com</a>
-                    </div>
-                </div>
-                
-                <div class="contact__item">
-                    <span class="contact__icon">📱</span>
-                    <div>
-                        <h3>Teléfono</h3>
-                        <a href="tel:+5493764398063">+54 9 3764-398063</a>
-                    </div>
-                </div>
-                
-                <div class="contact__item">
-                    <span class="contact__icon">🔗</span>
-                    <div>
-                        <h3>LinkedIn</h3>
-                        <a href="https://www.linkedin.com/in/gallarfa" target="_blank">linkedin.com/in/gallarfa</a>
-                    </div>
-                </div>
-                
-                <div class="contact__item">
-                    <span class="contact__icon">💻</span>
-                    <div>
-                        <h3>GitHub</h3>
-                        <a href="https://github.com/gallarfa" target="_blank">github.com/gallarfa</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+        
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer__content container">
-            <p>&copy; 2026 Fernando Gallardo. Construyendo mi futuro en IT.</p>
+        <div class="footer__container container">
+            <p class="footer__copy">&copy; 2026 Fernando Gallardo. Hecho con <i class="ri-heart-fill"></i> enfocado en la excelencia técnica.</p>
+            <p class="footer__sub">Estudiante de Analista de Sistemas & Desarrollador Junior</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
