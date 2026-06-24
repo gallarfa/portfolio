@@ -43,6 +43,10 @@
         
         <!-- SELECTOR DE TEMAS Y FUENTES (TOP RIGHT) -->
         <div class="theme-panel">
+            <button class="theme-btn" id="lang-toggle">
+                <div class="theme-btn__box"></div>
+                <span class="theme-btn__text">EN</span>
+            </button>
             <button class="theme-btn" id="theme-toggle">
                 <div class="theme-btn__box"></div>
                 <span class="theme-btn__text">Light</span>
@@ -57,30 +61,30 @@
         <header class="sidebar">
             <div class="sidebar__top">
                 <h1 class="sidebar__title">Fernando<br>Gallardo</h1>
-                <p class="sidebar__subtitle">Desarrollador de Software</p>
+                <p class="sidebar__subtitle" data-translate="sidebar_subtitle">Desarrollador de Software</p>
                 
                 <!-- Navegación por Pestañas -->
                 <nav class="sidebar__nav">
                     <ul class="sidebar__nav-list">
                         <li class="sidebar__nav-item is-active" data-tab="inicio">
                             <span class="sidebar__nav-dot">&#x25cf;</span>
-                            <span class="sidebar__nav-text">Inicio</span>
+                            <span class="sidebar__nav-text" data-translate="nav_home">Inicio</span>
                         </li>
                         <li class="sidebar__nav-item" data-tab="proyectos">
                             <span class="sidebar__nav-dot">&#x25cf;</span>
-                            <span class="sidebar__nav-text">Proyectos</span>
+                            <span class="sidebar__nav-text" data-translate="nav_projects">Proyectos</span>
                         </li>
                         <li class="sidebar__nav-item" data-tab="sobre-mi">
                             <span class="sidebar__nav-dot">&#x25cf;</span>
-                            <span class="sidebar__nav-text">Sobre Mí</span>
+                            <span class="sidebar__nav-text" data-translate="nav_about">Sobre Mí</span>
                         </li>
                         <li class="sidebar__nav-item" data-tab="experiencia">
                             <span class="sidebar__nav-dot">&#x25cf;</span>
-                            <span class="sidebar__nav-text">Experiencia</span>
+                            <span class="sidebar__nav-text" data-translate="nav_experience">Experiencia</span>
                         </li>
                         <li class="sidebar__nav-item" data-tab="contacto">
                             <span class="sidebar__nav-dot">&#x25cf;</span>
-                            <span class="sidebar__nav-text">Contacto</span>
+                            <span class="sidebar__nav-text" data-translate="nav_contact">Contacto</span>
                         </li>
                     </ul>
                 </nav>
@@ -88,7 +92,7 @@
 
             <div class="sidebar__footer">
                 <p>&copy; 2026 Fernando Gallardo.</p>
-                <p>Hecho con excelencia técnica.</p>
+                <p data-translate="sidebar_footer_sub">Hecho con excelencia técnica.</p>
             </div>
         </header>
 
@@ -101,23 +105,23 @@
                     <div class="home__content">
                         <div class="home__greeting">
                             <span class="home__greeting-dot"></span>
-                            <span>Disponible para trabajar</span>
+                            <span data-translate="home_greeting">Disponible para trabajar</span>
                         </div>
                         <h2 class="home__title">
                             Fernando Andrés <br>
                             <span>Gallardo</span>
                         </h2>
-                        <p class="home__description">
+                        <p class="home__description" data-translate="home_description">
                             Desarrollador enfocado en crear interfaces modernas, responsivas y de alto rendimiento. 
                             Con experiencia práctica en soporte de plataformas Fintech y desarrollo de APIs Backend. 
                             Siempre impulsado por la mejora continua.
                         </p>
                         <div class="home__actions">
                             <button class="btn btn--primary" id="go-to-projects">
-                                <i class="ri-folder-open-line"></i> Ver Proyectos
+                                <i class="ri-folder-open-line"></i> <span data-translate="home_btn_projects">Ver Proyectos</span>
                             </button>
                             <button class="btn btn--secondary" id="go-to-contact">
-                                <i class="ri-chat-3-line"></i> Contactarme
+                                <i class="ri-chat-3-line"></i> <span data-translate="home_btn_contact">Contactarme</span>
                             </button>
                         </div>
                     </div>
@@ -133,17 +137,17 @@
 
             <!-- PESTAÑA: PROYECTOS -->
             <section id="proyectos" class="tab-content">
-                <h2 class="section-title">Proyectos Destacados</h2>
+                <h2 class="section-title" data-translate="projects_title">Proyectos Destacados</h2>
                 <div class="projects-grid">
                     
                     <!-- Proyecto 1 -->
                     <div class="project-card">
                         <div class="project-card__header">
                             <i class="ri-server-line project-card__icon"></i>
-                            <span class="project-card__badge project-card__badge--success">Completado</span>
+                            <span class="project-card__badge project-card__badge--success" data-translate="project_badge_completed">Completado</span>
                         </div>
-                        <h3 class="project-card__title">App de Tareas - Backend API</h3>
-                        <p class="project-card__text">
+                        <h3 class="project-card__title" data-translate="project1_title">App de Tareas - Backend API</h3>
+                        <p class="project-card__text" data-translate="project1_desc">
                             API RESTful robusta para gestión de tareas. Cuenta con CRUD completo, persistencia en base de datos MongoDB con Mongoose y enrutamiento modular limpio.
                         </p>
                         <div class="project-card__tech">
@@ -154,7 +158,7 @@
                         </div>
                         <div class="project-card__links">
                             <a href="https://github.com/gallarfa/node_api_rest-mongo" target="_blank" class="project-card__link">
-                                <i class="ri-github-fill"></i> Código
+                                <i class="ri-github-fill"></i> <span data-translate="project_btn_code">Código</span>
                             </a>
                         </div>
                     </div>
@@ -163,10 +167,10 @@
                     <div class="project-card">
                         <div class="project-card__header">
                             <i class="ri-brain-line project-card__icon"></i>
-                            <span class="project-card__badge project-card__badge--success">Completado</span>
+                            <span class="project-card__badge project-card__badge--success" data-translate="project_badge_completed">Completado</span>
                         </div>
-                        <h3 class="project-card__title">Agente de Triage - Salud Mental</h3>
-                        <p class="project-card__text">
+                        <h3 class="project-card__title" data-translate="project2_title">Agente de Triage - Salud Mental</h3>
+                        <p class="project-card__text" data-translate="project2_desc">
                             Agente clasificador semántico para triage clínico que prioriza urgencias de salud mental localmente usando Ollama y Llama 3.2, con mitigación de alucinaciones y exportación en HTML/CSV.
                         </p>
                         <div class="project-card__tech">
@@ -177,7 +181,7 @@
                         </div>
                         <div class="project-card__links">
                             <a href="https://github.com/gallarfa/agente-ia-salud" target="_blank" class="project-card__link">
-                                <i class="ri-github-fill"></i> Código
+                                <i class="ri-github-fill"></i> <span data-translate="project_btn_code">Código</span>
                             </a>
                         </div>
                     </div>
@@ -186,10 +190,10 @@
                     <div class="project-card">
                         <div class="project-card__header">
                             <i class="ri-instance-line project-card__icon"></i>
-                            <span class="project-card__badge project-card__badge--success">Completado</span>
+                            <span class="project-card__badge project-card__badge--success" data-translate="project_badge_completed">Completado</span>
                         </div>
-                        <h3 class="project-card__title">API REST con FastAPI & Docker</h3>
-                        <p class="project-card__text">
+                        <h3 class="project-card__title" data-translate="project3_title">API REST con FastAPI & Docker</h3>
+                        <p class="project-card__text" data-translate="project3_desc">
                             API de gestión de usuarios dockerizada con docker-compose. Implementa seguridad JWT con hashing bcrypt, campos opcionales de base de datos y control global robusto de excepciones de SQL.
                         </p>
                         <div class="project-card__tech">
@@ -201,7 +205,7 @@
                         </div>
                         <div class="project-card__links">
                             <a href="https://github.com/gallarfa/api-rest-fastapi-postgres" target="_blank" class="project-card__link">
-                                <i class="ri-github-fill"></i> Código
+                                <i class="ri-github-fill"></i> <span data-translate="project_btn_code">Código</span>
                             </a>
                         </div>
                     </div>
@@ -210,10 +214,10 @@
                     <div class="project-card">
                         <div class="project-card__header">
                             <i class="ri-gamepad-line project-card__icon"></i>
-                            <span class="project-card__badge project-card__badge--success">Completado</span>
+                            <span class="project-card__badge project-card__badge--success" data-translate="project_badge_completed">Completado</span>
                         </div>
-                        <h3 class="project-card__title">Juego Snake Classic Pro</h3>
-                        <p class="project-card__text">
+                        <h3 class="project-card__title" data-translate="project4_title">Juego Snake Classic Pro</h3>
+                        <p class="project-card__text" data-translate="project4_desc">
                             Implementación interactiva del clásico juego Snake mediante HTML5 Canvas, con almacenamiento local (localStorage) de récord histórico, controles WASD y dificultad progresiva.
                         </p>
                         <div class="project-card__tech">
@@ -224,10 +228,10 @@
                         </div>
                         <div class="project-card__links">
                             <a href="https://github.com/gallarfa/juego-snake-html5" target="_blank" class="project-card__link">
-                                <i class="ri-github-fill"></i> Código
+                                <i class="ri-github-fill"></i> <span data-translate="project_btn_code">Código</span>
                             </a>
                             <a href="https://gallarfa.github.io/juego-snake-html5/" target="_blank" class="project-card__link">
-                                <i class="ri-external-link-line"></i> Jugar
+                                <i class="ri-external-link-line"></i> <span data-translate="project_btn_play">Jugar</span>
                             </a>
                         </div>
                     </div>
@@ -236,10 +240,10 @@
                     <div class="project-card">
                         <div class="project-card__header">
                             <i class="ri-film-line project-card__icon"></i>
-                            <span class="project-card__badge project-card__badge--warning">En Progreso</span>
+                            <span class="project-card__badge project-card__badge--warning" data-translate="project_badge_progress">En Progreso</span>
                         </div>
-                        <h3 class="project-card__title">MovieHub - Buscador</h3>
-                        <p class="project-card__text">
+                        <h3 class="project-card__title" data-translate="project5_title">MovieHub - Buscador</h3>
+                        <p class="project-card__text" data-translate="project5_desc">
                             Aplicación web que consume la API de TMDB. Incluye búsqueda con debounce, diseño responsivo premium, favoritos mediante localStorage y filtrados.
                         </p>
                         <div class="project-card__tech">
@@ -250,7 +254,7 @@
                         </div>
                         <div class="project-card__links">
                             <span class="project-card__link--disabled">
-                                <i class="ri-lock-line"></i> Próximamente (Semana 3)
+                                <i class="ri-lock-line"></i> <span data-translate="project_btn_soon_w3">Próximamente (Semana 3)</span>
                             </span>
                         </div>
                     </div>
@@ -259,10 +263,10 @@
                     <div class="project-card">
                         <div class="project-card__header">
                             <i class="ri-task-line project-card__icon"></i>
-                            <span class="project-card__badge project-card__badge--warning">En Progreso</span>
+                            <span class="project-card__badge project-card__badge--warning" data-translate="project_badge_progress">En Progreso</span>
                         </div>
-                        <h3 class="project-card__title">TaskFlow - Kanban Board</h3>
-                        <p class="project-card__text">
+                        <h3 class="project-card__title" data-translate="project6_title">TaskFlow - Kanban Board</h3>
+                        <p class="project-card__text" data-translate="project6_desc">
                             Gestor de tareas avanzado con interfaz tipo Kanban (Drag & Drop), control de estado global mediante Zustand, filtros múltiples y exportación a JSON.
                         </p>
                         <div class="project-card__tech">
@@ -273,7 +277,7 @@
                         </div>
                         <div class="project-card__links">
                             <span class="project-card__link--disabled">
-                                <i class="ri-lock-line"></i> Próximamente (Semana 5)
+                                <i class="ri-lock-line"></i> <span data-translate="project_btn_soon_w5">Próximamente (Semana 5)</span>
                             </span>
                         </div>
                     </div>
@@ -283,13 +287,13 @@
 
             <!-- PESTAÑA: SOBRE MÍ -->
             <section id="sobre-mi" class="tab-content">
-                <h2 class="section-title">Sobre Mí</h2>
+                <h2 class="section-title" data-translate="about_title">Sobre Mí</h2>
                 <div class="info-layout">
                     <div class="info__text">
-                        <p class="info__paragraph">
+                        <p class="info__paragraph" data-translate="about_p1">
                             Soy estudiante del último año de la carrera de <strong>Analista de Sistemas</strong> en Posadas, Misiones. Mi fascinación por la tecnología me ha llevado a capacitarme de manera constante en tecnologías Full Stack, especializándome actualmente en el desarrollo Frontend moderno.
                         </p>
-                        <p class="info__paragraph">
+                        <p class="info__paragraph" data-translate="about_p2">
                             A través de mis experiencias laborales previas, he aprendido el valor del trabajo en equipo, la comunicación técnica fluida y la importancia de una UX excepcional. Busco mi primera oportunidad formal como desarrollador frontend donde pueda aportar mi entusiasmo y bases sólidas, colaborando en la creación de software de calidad.
                         </p>
                         
@@ -297,15 +301,15 @@
                             <div class="info__card">
                                 <i class="ri-map-pin-user-line info__card-icon"></i>
                                 <div>
-                                    <h4>Ubicación</h4>
+                                    <h4 data-translate="about_location">Ubicación</h4>
                                     <p>Posadas, Misiones, Arg.</p>
                                 </div>
                             </div>
                             <div class="info__card">
                                 <i class="ri-global-line info__card-icon"></i>
                                 <div>
-                                    <h4>Idiomas</h4>
-                                    <p>Español (Nativo) / Inglés (B2 en prep.)</p>
+                                    <h4 data-translate="about_languages">Idiomas</h4>
+                                    <p data-translate="about_lang_desc">Español (Nativo) / Inglés (B2 en prep.)</p>
                                 </div>
                             </div>
                         </div>
@@ -314,7 +318,7 @@
                     <!-- Skills -->
                     <div class="skills-container">
                         <div class="skills__group">
-                            <h4 class="skills__subtitle"><i class="ri-layout-3-line"></i> Frontend</h4>
+                            <h4 class="skills__subtitle"><i class="ri-layout-3-line"></i> <span data-translate="skills_frontend">Frontend</span></h4>
                             <div class="skills__list">
                                 <span class="skill-badge"><i class="ri-html5-fill skill-icon-html"></i> HTML5</span>
                                 <span class="skill-badge"><i class="ri-css3-fill skill-icon-css"></i> CSS3</span>
@@ -325,7 +329,7 @@
                         </div>
 
                         <div class="skills__group">
-                            <h4 class="skills__subtitle"><i class="ri-server-line"></i> Backend & DB</h4>
+                            <h4 class="skills__subtitle"><i class="ri-server-line"></i> <span data-translate="skills_backend">Backend & DB</span></h4>
                             <div class="skills__list">
                                 <span class="skill-badge"><i class="ri-node-js skill-icon-node"></i> Node.js</span>
                                 <span class="skill-badge">Express</span>
@@ -335,13 +339,13 @@
                         </div>
 
                         <div class="skills__group">
-                            <h4 class="skills__subtitle"><i class="ri-tools-line"></i> Herramientas</h4>
+                            <h4 class="skills__subtitle"><i class="ri-tools-line"></i> <span data-translate="skills_tools">Herramientas</span></h4>
                             <div class="skills__list">
                                 <span class="skill-badge"><i class="ri-git-branch-line skill-icon-git"></i> Git</span>
                                 <span class="skill-badge"><i class="ri-github-fill"></i> GitHub</span>
                                 <span class="skill-badge">Jira / Trello</span>
-                                <span class="skill-badge font-soft">Trabajo en equipo</span>
-                                <span class="skill-badge font-soft">Comunicación</span>
+                                <span class="skill-badge font-soft" data-translate="skills_teamwork">Trabajo en equipo</span>
+                                <span class="skill-badge font-soft" data-translate="skills_com">Comunicación</span>
                             </div>
                         </div>
                     </div>
@@ -350,7 +354,7 @@
 
             <!-- PESTAÑA: EXPERIENCIA -->
             <section id="experiencia" class="tab-content">
-                <h2 class="section-title">Experiencia Profesional</h2>
+                <h2 class="section-title" data-translate="exp_title">Experiencia Profesional</h2>
                 <div class="experience-timeline">
                     
                     <!-- Silicon Misiones -->
@@ -358,9 +362,9 @@
                         <div class="exp-item__marker"></div>
                         <div class="exp-item__card">
                             <span class="exp-item__date">2023 - 2024</span>
-                            <h3 class="exp-item__title">Desarrollador Back-End</h3>
+                            <h3 class="exp-item__title" data-translate="exp_silicon_title">Desarrollador Back-End</h3>
                             <h4 class="exp-item__company">Silicon Misiones</h4>
-                            <p class="exp-item__desc">
+                            <p class="exp-item__desc" data-translate="exp_silicon_desc">
                                 Participación activa en el diseño y desarrollo de APIs REST utilizando Node.js y Express. 
                                 Aplicación de arquitecturas de backend y patrones de enrutamiento modulares. Trabajo diario 
                                 con Git y GitHub bajo flujos de trabajo colaborativos y resolución de incidencias en Jira.
@@ -373,9 +377,9 @@
                         <div class="exp-item__marker"></div>
                         <div class="exp-item__card">
                             <span class="exp-item__date">2024</span>
-                            <h3 class="exp-item__title">Soporte Técnico Interno</h3>
+                            <h3 class="exp-item__title" data-translate="exp_wallbit_title">Soporte Técnico Interno</h3>
                             <h4 class="exp-item__company">Wallbit (Neobanco Fintech)</h4>
-                            <p class="exp-item__desc">
+                            <p class="exp-item__desc" data-translate="exp_wallbit_desc">
                                 Resolución de consultas técnicas y operativas de primer nivel a usuarios a través de chat 
                                 y correo electrónico. Validación de identidad y aplicación de protocolos de seguridad 
                                 anti-fraude. Trabajo ágil con Trello/Jira y ganancia de visión sobre el funcionamiento 
@@ -389,9 +393,9 @@
 
             <!-- PESTAÑA: CONTACTO -->
             <section id="contacto" class="tab-content">
-                <h2 class="section-title">Hablemos</h2>
+                <h2 class="section-title" data-translate="contact_title">Hablemos</h2>
                 <div class="contact-layout">
-                    <p class="contact__intro">
+                    <p class="contact__intro" data-translate="contact_intro">
                         ¿Buscas incorporar un desarrollador con iniciativa, pasión y bases sólidas en tu equipo? ¡No dudes en contactarme! Estoy abierto a propuestas de empleo o pasantías.
                     </p>
                     
