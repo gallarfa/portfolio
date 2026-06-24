@@ -31,7 +31,7 @@ navLink.forEach(n => n.addEventListener('click', linkAction));
 const scrollHeader = () => {
     const header = document.getElementById('header');
     // Cuando el scroll es superior a 50px de altura, se añade una sombra o fondo
-    if(this.scrollY >= 50) {
+    if(window.scrollY >= 50) {
         header?.classList.add('scroll-header');
     } else {
         header?.classList.remove('scroll-header');
