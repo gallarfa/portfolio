@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==================== TRANSLATIONS DICTIONARY ==================== */
     const translations = {
         es: {
-            sidebar_subtitle: "Desarrollador de Software",
+            sidebar_subtitle: "Analista de Sistemas & Desarrollador Full Stack",
             nav_home: "Inicio",
             nav_projects: "Proyectos",
             nav_about: "Sobre Mí",
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contact_intro: "¿Buscas incorporar un desarrollador con iniciativa, pasión y bases sólidas en tu equipo? ¡No dudes en contactarme! Estoy abierto a propuestas de empleo o pasantías."
         },
         en: {
-            sidebar_subtitle: "Software Developer",
+            sidebar_subtitle: "Systems Analyst & Full Stack Developer",
             nav_home: "Home",
             nav_projects: "Projects",
             nav_about: "About Me",
