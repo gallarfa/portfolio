@@ -136,7 +136,7 @@ class AdBoard {
         this.messages = [
             "★ GOAT 10 ★", 
             "CAMPEONES DEL MUNDO ⭐⭐⭐", 
-            "MESSI RUNNER", 
+            "MESSI CUP", 
             "DANIEL EL TRAVIESO", 
             "EL REY LEO",
             "VAMOS ARGENTINA 🇦🇷"
