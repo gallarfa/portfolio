@@ -186,7 +186,7 @@ h1 {
 }
 
 .game-container:not(.game-active) .canvas-container {
-    min-height: 310px; /* Estira el contenedor para que entren la cabecera y el botón Iniciar/Reintentar */
+    min-height: 390px; /* Estira el contenedor para que entren la cabecera, guía de controles y el botón Iniciar/Reintentar sin recortar */
 }
 
 @keyframes border-pulse {
