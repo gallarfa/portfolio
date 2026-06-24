@@ -1,112 +1,143 @@
-/* ==================== MOSTRAR / OCULTAR MENÚ MÓVIL ==================== */
-const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
-      navClose = document.getElementById('nav-close');
+document.addEventListener('DOMContentLoaded', () => {
 
-/* Validar si el elemento de toggle existe */
-if(navToggle) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-menu');
-    });
-}
-
-/* Validar si el elemento de cerrar existe */
-if(navClose) {
-    navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu');
-    });
-}
-
-/* ==================== QUITAR MENÚ MÓVIL AL SELECCIONAR ENLACE ==================== */
-const navLink = document.querySelectorAll('.nav__link');
-
-const linkAction = () => {
-    const navMenu = document.getElementById('nav-menu');
-    // Cuando hacemos clic en cada nav__link, eliminamos la clase show-menu
-    navMenu.classList.remove('show-menu');
-}
-navLink.forEach(n => n.addEventListener('click', linkAction));
-
-/* ==================== CAMBIAR ESTILO DEL HEADER AL HACER SCROLL (STICKY) ==================== */
-const scrollHeader = () => {
-    const header = document.getElementById('header');
-    // Cuando el scroll es superior a 50px de altura, se añade una sombra o fondo
-    if(window.scrollY >= 50) {
-        header?.classList.add('scroll-header');
-    } else {
-        header?.classList.remove('scroll-header');
-    }
-}
-window.addEventListener('scroll', scrollHeader);
-
-/* ==================== ACTIVA ENLACES DEL MENÚ CON SCROLL ==================== */
-const sections = document.querySelectorAll('section[id]');
+    /* ==================== NAVEGACIÓN POR PESTAÑAS (TABS) ==================== */
+    const navItems = document.querySelectorAll('.sidebar__nav-item');
+    const tabContents = document.querySelectorAll('.tab-content');
     
-const scrollActive = () => {
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight,
-              sectionTop = current.offsetTop - 58,
-              sectionId = current.getAttribute('id'),
-              sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']');
-
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            sectionsClass?.classList.add('active-link');
+    // Inicializar visualización de pestañas en base al estado de la clase
+    tabContents.forEach(tab => {
+        if (tab.classList.contains('is-active')) {
+            tab.style.display = 'block';
+            // Pequeño timeout para asegurar que la opacidad transicione tras el display block
+            setTimeout(() => {
+                tab.style.opacity = '1';
+                tab.style.transform = 'translateY(0)';
+            }, 50);
         } else {
-            sectionsClass?.classList.remove('active-link');
-        }                                                    
-    });
-}
-window.addEventListener('scroll', scrollActive);
-
-/* ==================== EFECTO SCROLL REVEAL (INYECCIÓN DINÁMICA NATIVA) ==================== */
-// Inyectamos estilos CSS para el reveal dinámicamente sin tocar el archivo CSS
-const revealStyle = document.createElement('style');
-revealStyle.textContent = `
-    .reveal {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
-    }
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-document.head.appendChild(revealStyle);
-
-// Seleccionamos elementos que queremos animar en scroll
-const elementsToReveal = [
-    document.querySelector('.hero__content'),
-    document.querySelector('.hero__visual'),
-    document.getElementById('title-sobre-mi'),
-    document.querySelector('.about__text'),
-    document.querySelector('.skills__container'),
-    document.getElementById('title-experiencia'),
-    ...document.querySelectorAll('.timeline__item'),
-    document.getElementById('title-proyectos'),
-    ...document.querySelectorAll('.project-card'),
-    document.getElementById('title-contacto'),
-    document.querySelector('.contact__info')
-].filter(el => el !== null); // Filtrar nulos si acaso
-
-// Asignamos la clase reveal
-elementsToReveal.forEach(el => el.classList.add('reveal'));
-
-// Intersection Observer para disparar la animación
-const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting) {
-            entry.target.classList.add('active');
-            // Dejar de observar una vez animado
-            observer.unobserve(entry.target);
+            tab.style.display = 'none';
+            tab.style.opacity = '0';
+            tab.style.transform = 'translateY(15px)';
         }
     });
-}, {
-    threshold: 0.15, // Porcentaje visible para disparar la animación
-    rootMargin: "0px 0px -50px 0px"
-});
 
-// Observar cada elemento
-elementsToReveal.forEach(el => revealObserver.observe(el));
+    const switchTab = (tabId) => {
+        const activeTab = document.querySelector('.tab-content.is-active');
+        const targetTab = document.getElementById(tabId);
+        
+        if (activeTab === targetTab) return;
+        
+        // 1. Desvanecer pestaña activa actual
+        if (activeTab) {
+            activeTab.style.opacity = '0';
+            activeTab.style.transform = 'translateY(15px)';
+            activeTab.classList.remove('is-active');
+            
+            setTimeout(() => {
+                activeTab.style.display = 'none';
+                
+                // 2. Mostrar nueva pestaña activa
+                targetTab.style.display = 'block';
+                // Forzar reflow para que el navegador registre el cambio de display
+                targetTab.offsetHeight;
+                
+                targetTab.classList.add('is-active');
+                targetTab.style.opacity = '1';
+                targetTab.style.transform = 'translateY(0)';
+            }, 250); // coincide con la transición de opacidad
+        } else {
+            targetTab.style.display = 'block';
+            targetTab.offsetHeight;
+            targetTab.classList.add('is-active');
+            targetTab.style.opacity = '1';
+            targetTab.style.transform = 'translateY(0)';
+        }
+        
+        // 3. Actualizar menú lateral
+        navItems.forEach(item => {
+            if (item.getAttribute('data-tab') === tabId) {
+                item.classList.add('is-active');
+            } else {
+                item.classList.remove('is-active');
+            }
+        });
+        
+        // Scroll al tope automático si el contenido es largo
+        targetTab.scrollTop = 0;
+    };
+
+    // Agregar click listeners a ítems de navegación
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const tabId = item.getAttribute('data-tab');
+            switchTab(tabId);
+        });
+    });
+
+    // Enlaces directos desde el Inicio
+    const goToProjectsBtn = document.getElementById('go-to-projects');
+    const goToContactBtn = document.getElementById('go-to-contact');
+
+    if (goToProjectsBtn) {
+        goToProjectsBtn.addEventListener('click', () => switchTab('proyectos'));
+    }
+    if (goToContactBtn) {
+        goToContactBtn.addEventListener('click', () => switchTab('contacto'));
+    }
+
+    /* ==================== SELECTOR DE TEMA (LIGHT / DARK) ==================== */
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    
+    // Cargar preferencia del tema guardado
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    updateThemeButtonText(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeButtonText(newTheme);
+    });
+
+    function updateThemeButtonText(theme) {
+        const textSpan = themeToggleBtn.querySelector('.theme-btn__text');
+        if (theme === 'dark') {
+            textSpan.textContent = 'Light';
+            themeToggleBtn.classList.remove('is-selected');
+        } else {
+            textSpan.textContent = 'Dark';
+            themeToggleBtn.classList.add('is-selected');
+        }
+    }
+
+    /* ==================== ALTERNADOR DE FUENTE MONOESPACIADA ==================== */
+    const monoToggleBtn = document.getElementById('mono-toggle');
+    
+    // Cargar preferencia de fuente guardada
+    const savedFont = localStorage.getItem('fontStyle') || 'regular';
+    if (savedFont === 'mono') {
+        body.classList.add('is-mono');
+        monoToggleBtn.classList.add('is-selected');
+    } else {
+        body.classList.remove('is-mono');
+        monoToggleBtn.classList.remove('is-selected');
+    }
+
+    monoToggleBtn.addEventListener('click', () => {
+        const isMonoActive = body.classList.contains('is-mono');
+        
+        if (isMonoActive) {
+            body.classList.remove('is-mono');
+            monoToggleBtn.classList.remove('is-selected');
+            localStorage.setItem('fontStyle', 'regular');
+        } else {
+            body.classList.add('is-mono');
+            monoToggleBtn.classList.add('is-selected');
+            localStorage.setItem('fontStyle', 'mono');
+        }
+    });
+
+});
