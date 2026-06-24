@@ -1165,33 +1165,62 @@ function varColor(name, fallback) {
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
 }
 
-// Dibujar fondo de estadio con público silueteado
+// Dibujar fondo de estadio con público silueteado y focos de neón
 function drawStadiumBackground() {
     const skyGrad = ctx.createLinearGradient(0, 0, 0, groundY + 50);
-    skyGrad.addColorStop(0, '#020617');
-    skyGrad.addColorStop(1, '#0f172a');
+    skyGrad.addColorStop(0, '#020512');
+    skyGrad.addColorStop(1, '#0b0f19');
     ctx.fillStyle = skyGrad;
     ctx.fillRect(0, 0, canvas.width, groundY + 50);
+
+    // Haz de luz de los reflectores (Spotlight beams)
+    const beamGrad1 = ctx.createLinearGradient(104, 25, 150, groundY + 50);
+    beamGrad1.addColorStop(0, 'rgba(56, 189, 248, 0.12)');
+    beamGrad1.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+    ctx.fillStyle = beamGrad1;
+    ctx.beginPath();
+    ctx.moveTo(104, 25);
+    ctx.lineTo(0, groundY + 50);
+    ctx.lineTo(250, groundY + 50);
+    ctx.closePath();
+    ctx.fill();
+
+    const beamGrad2 = ctx.createLinearGradient(704, 25, 650, groundY + 50);
+    beamGrad2.addColorStop(0, 'rgba(56, 189, 248, 0.12)');
+    beamGrad2.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+    ctx.fillStyle = beamGrad2;
+    ctx.beginPath();
+    ctx.moveTo(704, 25);
+    ctx.lineTo(550, groundY + 50);
+    ctx.lineTo(canvas.width, groundY + 50);
+    ctx.closePath();
+    ctx.fill();
     
     // Dibujar reflectores del estadio
-    ctx.fillStyle = 'rgba(30, 41, 59, 0.2)';
+    ctx.fillStyle = 'rgba(30, 41, 59, 0.35)';
     ctx.fillRect(100, 30, 8, groundY - 30);
     ctx.fillRect(92, 20, 24, 10);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowColor = '#ffffff';
+    ctx.shadowBlur = 8;
     ctx.beginPath();
-    ctx.arc(104, 25, 18, 0, Math.PI, true);
+    ctx.arc(104, 25, 6, 0, Math.PI * 2);
     ctx.fill();
+    ctx.shadowBlur = 0;
     
-    ctx.fillStyle = 'rgba(30, 41, 59, 0.2)';
+    ctx.fillStyle = 'rgba(30, 41, 59, 0.35)';
     ctx.fillRect(700, 30, 8, groundY - 30);
     ctx.fillRect(692, 20, 24, 10);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowColor = '#ffffff';
+    ctx.shadowBlur = 8;
     ctx.beginPath();
-    ctx.arc(704, 25, 18, 0, Math.PI, true);
+    ctx.arc(704, 25, 6, 0, Math.PI * 2);
     ctx.fill();
+    ctx.shadowBlur = 0;
     
     // Silueta del público en las tribunas
-    ctx.fillStyle = 'rgba(15, 23, 42, 0.45)';
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.6)';
     ctx.beginPath();
     ctx.moveTo(0, groundY + 50);
     ctx.lineTo(0, 135);
@@ -1200,13 +1229,27 @@ function drawStadiumBackground() {
     ctx.fill();
 
     // Dibujar cabecitas del público (Píxeles/Textura de tribuna que vibra)
-    ctx.fillStyle = 'rgba(15, 23, 42, 0.55)';
-    const bounceOffset = (gameFrame % 20 < 10) ? 1 : 0; // El público salta al ritmo del juego
+    ctx.fillStyle = 'rgba(21, 29, 45, 0.7)';
+    const bounceOffset = (gameFrame % 20 < 10) ? 1 : 0; 
     for (let x = 10; x < canvas.width; x += 16) {
         const heightY = 135 + Math.sin(x * 0.05) * 5 + bounceOffset;
         ctx.beginPath();
         ctx.arc(x, heightY, 3.5, 0, Math.PI * 2);
         ctx.fill();
+    }
+
+    // Destellos de cámaras/flashes en la tribuna (Camera flashes!)
+    for (let i = 0; i < 18; i++) {
+        const flashX = (Math.sin(i * 37.3) * 0.5 + 0.5) * canvas.width;
+        const flashY = 110 + (Math.cos(i * 49.7) * 0.5 + 0.5) * 25 + Math.sin(gameFrame * 0.05 + i) * 2;
+        
+        if (Math.sin(gameFrame * 0.12 + i * 2.7) > 0.85) {
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#ffffff';
+            ctx.fillRect(flashX, flashY, 2.5, 2.5);
+            ctx.shadowBlur = 0;
+        }
     }
 }
 
