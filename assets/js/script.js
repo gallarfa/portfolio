@@ -197,10 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const box = langToggleBtn.querySelector('.theme-btn__box');
         
         if (lang === 'es') {
-            textSpan.textContent = 'EN'; // muestra el idioma al que puedes cambiar
+            textSpan.textContent = 'ES';
             langToggleBtn.classList.remove('is-selected');
         } else {
-            textSpan.textContent = 'ES';
+            textSpan.textContent = 'EN';
             langToggleBtn.classList.add('is-selected');
         }
         
