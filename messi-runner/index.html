@@ -3,42 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messi Dribble Run - Juego Estilo Dino</title>
+    <title>Messi Cup - Juego Estilo Viborita</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Líneas de marco estético doble (Estilo Keita Yamada) -->
-    <div class="frame_line frame_line--top"></div>
-    <div class="frame_line frame_line--bottom"></div>
-    <div class="frame_line frame_line--left"></div>
-    <div class="frame_line frame_line--right"></div>
-
     <div class="game-container">
         <header class="game-header">
             <div class="header-left">
                 <a href="../index.html" class="back-btn">← Volver al Portfolio</a>
-                <h1>Messi Dribble</h1>
+                <h1>Messi Cup</h1>
             </div>
             <div class="score-board">
                 <div class="score-box">
-                    <span class="score-label">Distancia</span>
-                    <span id="score" class="score-value">0m</span>
+                    <span class="score-label">Copas</span>
+                    <span id="score" class="score-value">0</span>
                 </div>
                 <div class="score-box">
                     <span class="score-label">Récord</span>
-                    <span id="high-score" class="score-value">0m</span>
+                    <span id="high-score" class="score-value">0</span>
                 </div>
             </div>
         </header>
 
         <main class="canvas-container">
-            <canvas id="gameCanvas" width="800" height="300"></canvas>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
             
             <div id="overlay" class="overlay">
-                <h2 id="overlay-title">Messi Dribble Run</h2>
+                <h2 id="overlay-title">Messi Cup 🏆</h2>
                 <div class="messi-art-preview">
-                    <!-- Dibujo dinámico de Messi Dennis-style con CSS/SVG -->
+                    <!-- Dibujo dinámico de Messi Dennis-style -->
                     <div class="cartoon-messi">
                         <div class="hair-spikes"></div>
                         <div class="face">
@@ -46,38 +40,33 @@
                             <div class="eye right"></div>
                             <div class="smile"></div>
                         </div>
-                        <div class="shirt"></div>
                     </div>
                 </div>
-                <p id="overlay-desc">¡Ayuda a Messi a eludir rivales y llevar la pelota al infinito!</p>
+                <p id="overlay-desc">¡Conduce a Messi, junta Copas del Mundo y arma a la Scaloneta!</p>
                 <div class="controls-guide">
                     <div class="guide-item">
-                        <span class="key">ESPACIO / ↑ / Tocar Derecha</span>
-                        <span class="action">Saltar / Evitar barrida</span>
+                        <span class="key">▲ / ▼ / ◀ / ▶</span>
+                        <span class="action">Mover a Messi</span>
                     </div>
                     <div class="guide-item">
-                        <span class="key">↓ (Mantener) / Tocar Izquierda</span>
-                        <span class="action">Agacharse / Esquivar cabezazo</span>
+                        <span class="key">Teclas W / A / S / D</span>
+                        <span class="action">Controles alternativos</span>
                     </div>
                 </div>
-                <button id="start-btn" class="primary-btn">Iniciar Carrera</button>
+                <button id="start-btn" class="primary-btn">Jugar</button>
             </div>
         </main>
 
-        <!-- Controles táctiles móviles en pantalla -->
-        <div class="touch-controls">
-            <button class="touch-btn btn-slide" id="touch-slide">
-                <span class="btn-icon">▼</span>
-                <span class="btn-text">AGACHADO</span>
-            </button>
-            <button class="touch-btn btn-jump" id="touch-jump">
-                <span class="btn-icon">▲</span>
-                <span class="btn-text">SALTAR</span>
-            </button>
+        <!-- Controles táctiles móviles en cruz (D-Pad estilo Viborita) -->
+        <div class="mobile-controls">
+            <button class="ctrl-btn btn-up" id="ctrl-up">▲</button>
+            <button class="ctrl-btn btn-left" id="ctrl-left">◀</button>
+            <button class="ctrl-btn btn-right" id="ctrl-right">▶</button>
+            <button class="ctrl-btn btn-down" id="ctrl-down">▼</button>
         </div>
 
         <footer class="game-footer">
-            <p>Esquiva defensores, salta barridas y agáchate ante tarjetas voladoras. ¡El récord se guarda en tu PC!</p>
+            <p>Junta copas para sumar jugadores a la hilera (Dibu, De Paul, Di María...). ¡Evita chocar contra los bordes o contra tu propio equipo!</p>
         </footer>
     </div>
 

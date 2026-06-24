@@ -31,7 +31,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Grano analógico sutil de fondo (para combinar con el portfolio) */
+/* Grano analógico sutil de fondo */
 body::after {
     content: "";
     position: fixed;
@@ -82,12 +82,12 @@ body::after {
     background: rgba(17, 24, 39, 0.45);
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
-    padding: 2.2rem;
+    padding: 2rem;
     border-radius: 28px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 
                 inset 0 1px 0 rgba(255, 255, 255, 0.06),
                 0 0 25px rgba(56, 189, 248, 0.04);
-    max-width: 860px;
+    max-width: 500px; /* Tamaño del juego de la viborita */
     width: 100%;
     border: 1px solid rgba(56, 189, 248, 0.12);
 }
@@ -96,7 +96,7 @@ body::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -104,18 +104,18 @@ body::after {
 .header-left {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.4rem;
 }
 
 .back-btn {
     align-self: flex-start;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--text-muted);
     text-decoration: none;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 0.35rem 0.75rem;
+    padding: 0.35rem 0.65rem;
     border-radius: 8px;
     transition: all 0.25s ease;
 }
@@ -129,7 +129,7 @@ body::after {
 
 h1 {
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     font-weight: bold;
     background: linear-gradient(to right, var(--sky-blue), #ffffff, var(--accent-color));
     -webkit-background-clip: text;
@@ -141,43 +141,43 @@ h1 {
 
 .score-board {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.6rem;
 }
 
 .score-box {
     background: rgba(0, 0, 0, 0.35);
-    padding: 0.6rem 1rem;
-    border-radius: 14px;
+    padding: 0.5rem 0.8rem;
+    border-radius: 12px;
     text-align: center;
-    min-width: 105px;
+    min-width: 85px;
     border: 1px solid rgba(56, 189, 248, 0.12);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .score-label {
     display: block;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--text-muted);
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
     letter-spacing: 0.5px;
 }
 
 .score-value {
     display: block;
     font-family: 'Press Start 2P', monospace;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: bold;
     color: var(--gold);
     text-shadow: 0 0 8px rgba(251, 191, 36, 0.35);
 }
 
-/* Contenedor de la pantalla de juego con borde de neón pulsante */
+/* Contenedor de la pantalla con neón pulsante */
 .canvas-container {
     position: relative;
     background-color: var(--canvas-bg);
-    border-radius: 20px;
+    border-radius: 18px;
     overflow: hidden;
     box-shadow: inset 0 0 35px rgba(0,0,0,0.95);
     border: 2px solid rgba(56, 189, 248, 0.2);
@@ -200,10 +200,10 @@ canvas {
     margin: 0 auto;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 800 / 300;
+    aspect-ratio: 1 / 1; /* Cuadrado como la viborita */
 }
 
-/* Pantalla de overlay (Menú / Game Over) estilo consola cyberpunk */
+/* Pantalla de overlay (Menú / Game Over) */
 .overlay {
     position: absolute;
     top: 0;
@@ -218,7 +218,7 @@ canvas {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: opacity 0.3s ease;
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid rgba(56, 189, 248, 0.1);
 }
 
@@ -229,8 +229,8 @@ canvas {
 
 #overlay-title {
     font-family: 'Press Start 2P', cursive;
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
     font-weight: bold;
     text-align: center;
     background: linear-gradient(to right, var(--sky-blue), var(--gold));
@@ -241,10 +241,10 @@ canvas {
 
 #overlay-desc {
     color: var(--text-muted);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     text-align: center;
-    max-width: 80%;
-    font-size: 0.9rem;
+    max-width: 90%;
+    font-size: 0.85rem;
     line-height: 1.5;
 }
 
@@ -253,10 +253,10 @@ canvas {
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
-    max-width: 440px;
-    margin-bottom: 1.6rem;
+    max-width: 360px;
+    margin-bottom: 1.5rem;
     background: rgba(255, 255, 255, 0.015);
-    padding: 0.85rem;
+    padding: 0.8rem;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.04);
 }
@@ -270,7 +270,7 @@ canvas {
 
 .key {
     background-color: rgba(56, 189, 248, 0.08);
-    padding: 0.25rem 0.55rem;
+    padding: 0.2rem 0.5rem;
     border-radius: 6px;
     font-weight: bold;
     color: var(--sky-blue);
@@ -286,9 +286,9 @@ canvas {
     background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
     color: white;
     border: 1px solid rgba(16, 185, 129, 0.3);
-    padding: 0.85rem 2.4rem;
+    padding: 0.8rem 2.2rem;
     font-family: 'Space Mono', monospace;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 700;
     border-radius: 12px;
     cursor: pointer;
@@ -309,15 +309,15 @@ canvas {
 
 /* Avatar de Messi en el Menú */
 .cartoon-messi {
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     position: relative;
-    margin: 0 auto 1.2rem;
+    margin: 0 auto 1rem;
 }
 
 .cartoon-messi .face {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     background-color: #ffd6ad;
     border-radius: 50%;
     position: absolute;
@@ -327,35 +327,35 @@ canvas {
 }
 
 .cartoon-messi .face .eye {
-    width: 5px;
-    height: 5px;
+    width: 4.5px;
+    height: 4.5px;
     background: #000;
     border-radius: 50%;
     position: absolute;
-    top: 13px;
+    top: 12px;
 }
 
-.cartoon-messi .face .eye.left { left: 9px; }
-.cartoon-messi .face .eye.right { right: 9px; }
+.cartoon-messi .face .eye.left { left: 8px; }
+.cartoon-messi .face .eye.right { right: 8px; }
 
 .cartoon-messi .face .smile {
-    width: 12px;
-    height: 6px;
+    width: 10px;
+    height: 5px;
     border-bottom: 2px solid #000;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 7px 7px;
     position: absolute;
-    bottom: 9px;
-    left: 12px;
+    bottom: 8px;
+    left: 11px;
 }
 
 .cartoon-messi .hair-spikes {
     position: absolute;
     top: 4px;
     left: 8px;
-    width: 48px;
-    height: 22px;
+    width: 44px;
+    height: 20px;
     background-color: #fbbf24;
-    border-radius: 12px 12px 0 0;
+    border-radius: 10px 10px 0 0;
     border: 2px solid #000;
 }
 
@@ -366,9 +366,9 @@ canvas {
     left: 8px;
     width: 0;
     height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 10px solid #fbbf24;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 9px solid #fbbf24;
 }
 
 .cartoon-messi .hair-spikes::after {
@@ -378,81 +378,81 @@ canvas {
     right: 8px;
     width: 0;
     height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 10px solid #fbbf24;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 9px solid #fbbf24;
 }
 
-/* Botones Táctiles Móviles de Vidrio / Glassmorphism */
-.touch-controls {
-    display: none; 
-    justify-content: space-between;
-    gap: 1.2rem;
-    margin-top: 1.6rem;
-    width: 100%;
+/* Controles móviles virtuales (D-Pad en cruz estilo Viborita) */
+.mobile-controls {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 1.2rem auto 0;
+    background: rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    padding: 10px;
+    display: none; /* Oculto en escritorio */
 }
 
-.touch-btn {
-    flex: 1;
-    height: 68px;
-    border-radius: 18px;
-    background: rgba(17, 24, 39, 0.7);
-    border: 2px solid rgba(255, 255, 255, 0.06);
+.ctrl-btn {
+    position: absolute;
+    background-color: var(--panel-bg);
+    border: 2px solid rgba(255, 255, 255, 0.08);
     color: var(--text-main);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.1s ease;
     user-select: none;
     touch-action: manipulation;
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Botón de deslizar amarillo neon */
-.touch-btn.btn-slide {
-    border-color: rgba(251, 191, 36, 0.2);
-    color: var(--gold);
-    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.08);
+.ctrl-btn.btn-up {
+    top: 5px;
+    left: 50px;
+    width: 60px;
+    height: 45px;
+    border-radius: 12px 12px 4px 4px;
 }
 
-.touch-btn.btn-slide:active, .touch-btn.btn-slide.pressed {
-    background-color: var(--gold);
-    border-color: var(--gold);
-    color: #000000;
-    transform: scale(0.94);
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.55);
+.ctrl-btn.btn-down {
+    bottom: 5px;
+    left: 50px;
+    width: 60px;
+    height: 45px;
+    border-radius: 4px 4px 12px 12px;
 }
 
-/* Botón de saltar azul celeste neon */
-.touch-btn.btn-jump {
-    border-color: rgba(56, 189, 248, 0.2);
-    color: var(--sky-blue);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.08);
+.ctrl-btn.btn-left {
+    top: 50px;
+    left: 5px;
+    width: 45px;
+    height: 60px;
+    border-radius: 12px 4px 4px 12px;
 }
 
-.touch-btn.btn-jump:active, .touch-btn.btn-jump.pressed {
+.ctrl-btn.btn-right {
+    top: 50px;
+    right: 5px;
+    width: 45px;
+    height: 60px;
+    border-radius: 4px 12px 12px 4px;
+}
+
+.ctrl-btn:active, .ctrl-btn.pressed {
     background-color: var(--sky-blue);
     border-color: var(--sky-blue);
-    color: #000000;
-    transform: scale(0.94);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.55);
+    color: #000;
+    transform: scale(0.95);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
 }
 
-.btn-icon {
-    font-size: 1.25rem;
-    margin-bottom: 2px;
-}
-
-.btn-text {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-/* Botón de sonido flotante retro */
+/* Sonido flotante retro */
 .sound-btn {
     position: fixed;
     bottom: 25px;
@@ -481,20 +481,27 @@ canvas {
 }
 
 .game-footer {
-    margin-top: 1.8rem;
+    margin-top: 1.5rem;
     text-align: center;
     color: var(--text-muted);
     font-size: 0.75rem;
     line-height: 1.5;
 }
 
-/* Mostrar controles en dispositivos móviles activos */
-.game-active .touch-controls {
-    display: flex;
+/* Mostrar controles móviles activos */
+.game-active .mobile-controls {
+    display: block;
+}
+
+/* Ocultar controles móviles por defecto en escritorio con mouse */
+@media (hover: hover) and (pointer: fine) {
+    .mobile-controls {
+        display: none !important;
+    }
 }
 
 /* Adaptación responsive para celulares */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     body {
         padding: 8px;
     }
@@ -543,13 +550,42 @@ canvas {
         font-size: 0.9rem;
         border-radius: 10px;
     }
-    .touch-controls {
+    .mobile-controls {
+        width: 140px;
+        height: 140px;
         margin-top: 1rem;
-        gap: 0.6rem;
+        padding: 6px;
     }
-    .touch-btn {
-        height: 60px;
-        border-radius: 14px;
+    .ctrl-btn.btn-up {
+        top: 4px;
+        left: 45px;
+        width: 50px;
+        height: 40px;
+        border-radius: 10px 10px 4px 4px;
+    }
+    .ctrl-btn.btn-down {
+        bottom: 4px;
+        left: 45px;
+        width: 50px;
+        height: 40px;
+        border-radius: 4px 4px 10px 10px;
+    }
+    .ctrl-btn.btn-left {
+        top: 45px;
+        left: 4px;
+        width: 40px;
+        height: 50px;
+        border-radius: 10px 4px 4px 10px;
+    }
+    .ctrl-btn.btn-right {
+        top: 45px;
+        right: 4px;
+        width: 40px;
+        height: 50px;
+        border-radius: 4px 10px 10px 4px;
+    }
+    .ctrl-btn {
+        font-size: 1.1rem;
     }
 }
 
