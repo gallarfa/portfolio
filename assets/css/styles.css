@@ -692,6 +692,7 @@ section {
     display: flex;
     align-items: center;
     margin-top: auto;
+    column-gap: 1.5rem;
 }
 
 .project-card__link {
