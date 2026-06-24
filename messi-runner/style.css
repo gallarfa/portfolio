@@ -1,0 +1,463 @@
+:root {
+    --bg-color: #0f172a;
+    --panel-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-color: #10b981;
+    --accent-hover: #059669;
+    --danger-color: #ef4444;
+    --sky-blue: #38bdf8;
+    --jersey-blue: #004b93;
+    --canvas-bg: #020617;
+    --gold: #fbbf24;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Grano analógico sutil de fondo (para combinar con el portfolio) */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.game-container {
+    background-color: var(--panel-bg);
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    max-width: 860px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.back-btn {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.back-btn:hover {
+    color: var(--sky-blue);
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: linear-gradient(to right, var(--sky-blue), #ffffff, var(--jersey-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.score-board {
+    display: flex;
+    gap: 1rem;
+}
+
+.score-box {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.score-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.score-value {
+    display: block;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.canvas-container {
+    position: relative;
+    background-color: var(--canvas-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 800 / 300;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.93);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    transition: opacity 0.3s ease;
+    padding: 2rem;
+}
+
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#overlay-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(to right, var(--sky-blue), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#overlay-desc {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    max-width: 80%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.controls-guide {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    max-width: 460px;
+    margin-bottom: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.guide-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.key {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--sky-blue);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.action {
+    color: var(--text-main);
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+}
+
+.primary-btn:active {
+    transform: translateY(0);
+}
+
+/* Estilo caricatura dinámica de Messi en el Menú */
+.cartoon-messi {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    margin: 0 auto 1.5rem;
+}
+
+.cartoon-messi .face {
+    width: 44px;
+    height: 44px;
+    background-color: #ffd6ad;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 13px;
+    border: 2px solid #000;
+}
+
+.cartoon-messi .face .eye {
+    width: 6px;
+    height: 6px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+}
+
+.cartoon-messi .face .eye.left { left: 10px; }
+.cartoon-messi .face .eye.right { right: 10px; }
+
+.cartoon-messi .face .smile {
+    width: 14px;
+    height: 7px;
+    border-bottom: 2px solid #000;
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 13px;
+}
+
+.cartoon-messi .hair-spikes {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    width: 54px;
+    height: 24px;
+    background-color: #fbbf24; /* Rubio travieso */
+    border-radius: 15px 15px 0 0;
+    border: 2px solid #000;
+}
+
+.cartoon-messi .hair-spikes::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid #fbbf24;
+}
+
+.cartoon-messi .hair-spikes::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 12px solid #fbbf24;
+}
+
+/* Controles táctiles móviles en pantalla */
+.touch-controls {
+    display: none; /* Oculto en escritorio */
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.touch-btn {
+    flex: 1;
+    height: 65px;
+    border-radius: 16px;
+    background-color: var(--panel-bg);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+    transition: all 0.1s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.touch-btn:active, .touch-btn.pressed {
+    background-color: var(--sky-blue);
+    border-color: var(--sky-blue);
+    color: #000;
+    transform: scale(0.95);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+.touch-btn.btn-slide:active, .touch-btn.btn-slide.pressed {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+}
+
+.btn-text {
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Sonido Flotante */
+.sound-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--panel-bg);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.sound-btn:hover {
+    transform: scale(1.08);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.game-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* Modo activo del juego para mostrar controles táctiles */
+.game-active .touch-controls {
+    display: flex;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .game-container {
+        padding: 1rem;
+        border-radius: 16px;
+    }
+    .game-header {
+        margin-bottom: 1rem;
+    }
+    h1 {
+        font-size: 1.1rem;
+    }
+    .score-box {
+        padding: 0.4rem 0.6rem;
+        min-width: 80px;
+    }
+    .score-value {
+        font-size: 0.8rem;
+    }
+    #overlay-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    #overlay-desc {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        max-width: 100%;
+    }
+    .controls-guide {
+        margin-bottom: 1rem;
+        padding: 0.6rem;
+    }
+    .primary-btn {
+        padding: 0.7rem 1.8rem;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+    .touch-controls {
+        margin-top: 1rem;
+    }
+    .touch-btn {
+        height: 58px;
+    }
+}
+
+@media (pointer: coarse) {
+    /* En dispositivos puramente táctiles ocultamos la guía de teclas */
+    .controls-guide {
+        display: none;
+    }
+    #overlay-desc {
+        margin-bottom: 1.5rem;
+    }
+}

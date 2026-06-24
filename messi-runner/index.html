@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messi Dribble Run - Juego Estilo Dino</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="header-left">
+                <a href="../index.html" class="back-btn">← Volver al Portfolio</a>
+                <h1>Messi Dribble</h1>
+            </div>
+            <div class="score-board">
+                <div class="score-box">
+                    <span class="score-label">Distancia</span>
+                    <span id="score" class="score-value">0m</span>
+                </div>
+                <div class="score-box">
+                    <span class="score-label">Récord</span>
+                    <span id="high-score" class="score-value">0m</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="canvas-container">
+            <canvas id="gameCanvas" width="800" height="300"></canvas>
+            
+            <div id="overlay" class="overlay">
+                <h2 id="overlay-title">Messi Dribble Run</h2>
+                <div class="messi-art-preview">
+                    <!-- Dibujo dinámico de Messi Dennis-style con CSS/SVG -->
+                    <div class="cartoon-messi">
+                        <div class="hair-spikes"></div>
+                        <div class="face">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                            <div class="smile"></div>
+                        </div>
+                        <div class="shirt"></div>
+                    </div>
+                </div>
+                <p id="overlay-desc">¡Ayuda a Messi a eludir rivales y llevar la pelota al infinito!</p>
+                <div class="controls-guide">
+                    <div class="guide-item">
+                        <span class="key">ESPACIO / ↑ / Tocar Derecha</span>
+                        <span class="action">Saltar / Evitar barrida</span>
+                    </div>
+                    <div class="guide-item">
+                        <span class="key">↓ (Mantener) / Tocar Izquierda</span>
+                        <span class="action">Agacharse / Esquivar cabezazo</span>
+                    </div>
+                </div>
+                <button id="start-btn" class="primary-btn">Iniciar Carrera</button>
+            </div>
+        </main>
+
+        <!-- Controles táctiles móviles en pantalla -->
+        <div class="touch-controls">
+            <button class="touch-btn btn-slide" id="touch-slide">
+                <span class="btn-icon">▼</span>
+                <span class="btn-text">AGACHADO</span>
+            </button>
+            <button class="touch-btn btn-jump" id="touch-jump">
+                <span class="btn-icon">▲</span>
+                <span class="btn-text">SALTAR</span>
+            </button>
+        </div>
+
+        <footer class="game-footer">
+            <p>Esquiva defensores, salta barridas y agáchate ante tarjetas voladoras. ¡El récord se guarda en tu PC!</p>
+        </footer>
+    </div>
+
+    <!-- Botón de Sonido Flotante -->
+    <button id="sound-toggle" class="sound-btn" title="Activar/Desactivar Sonido">🔊</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
