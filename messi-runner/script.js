@@ -295,10 +295,10 @@ class Messi {
         this.width = 46;
         this.height = 72;
         this.vy = 0;
-        this.gravity = 1.25;
-        this.jumpForce = -20.0;
+        this.gravity = 1.35;
+        this.jumpForce = -22.0;
         this.jumping = false;
-        this.isHoldingJump = false; // Flag for variable jump height
+        this.isHoldingJump = false; // Kept for interface compatibility but not capping height anymore
         
         this.ball = {
             rotation: 0,
@@ -349,15 +349,9 @@ class Messi {
             }
         }
 
-        // Gravity with variable cutoff
+        // Gravity with constant full-force jump (instantly fast and high from a single tap)
         if (this.jumping) {
             this.vy += this.gravity;
-            
-            // Variable jump height: if button released early, cap upward velocity to allow a solid minimum jump
-            if (!this.isHoldingJump && this.vy < -9.5) {
-                this.vy = -9.5;
-            }
-
             this.y += this.vy;
             
             if (this.y >= groundY) {
